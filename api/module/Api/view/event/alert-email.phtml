@@ -1,0 +1,70 @@
+<?php
+/** @var \Api\V1\Entity\Contact $from */
+$from = $this->from;
+/** @var \Api\V1\Entity\Contact $to */
+$to = $this->to;
+$safe = $this->safe;
+$dialno = $this->dialno;
+
+$web = $this->web;
+$link = $this->secureBaseUrl . $this->alertLink;
+$gender = $from->getGender();
+$personalPronoun = ($gender === null) ? 'their' : ($gender == 0 ? 'his' : 'her');
+$name = $from->getFullName()
+    ? $this->escapeHtml($from->getFullName())
+    : $this->escapeHtml($from->getEmail());
+$fname = $this->escapeHtml($from->getFirstName() ?: $from->getEmail());
+$this->subject =  $name . ' feels threatened right now!';
+if($safe =='safe')
+    $this->subject = $name. ' reached safely';
+?>
+
+<div class="body">
+    <p>
+        Hi <?= $this->escapeHtml($to->getFirstName()) ?>...
+    </p>
+     <?php if ($safe == 'safe') : ?>
+        <p>
+            You&rsquo;re receiving this email as one of <?= $name ?>&rsquo;s
+            trusted contacts.
+		</p>
+        <p>
+		<?= $fname ?> has reached <?= $personalPronoun ?> destination safely. You may use the
+        link
+        below to see <?= $fname ?>&rsquo;s last GPS location as captured by iWitness.
+    </p>
+    <?php else: ?>
+    <p>
+        You&rsquo;re receiving this urgent email as one of <?= $name ?>&rsquo;s
+        trusted contacts.
+    </p>
+
+    <p>
+        <?= $fname ?> has just initiated an <span class="bold">iWitness alert</span> as a result of feeling
+        threatened.
+		An attempt to reach <?= $dialno ?> has
+        been triggered and you have been alerted as part of <?= $fname ?>&rsquo;s trusted contact group. You may use
+        the
+		link
+        <?php if($safe =='danger') : ?>
+		     below to see <?= $fname ?>&rsquo;s last GPS location captured by iWitness.
+        <?php else: ?>
+		     below to see <?= $fname ?>&rsquo;s last GPS location and a video of the event as captured by iWitness.
+        <?php endif; ?>
+    </p>
+
+    <p>
+        Please attempt to contact <?= $fname ?> immediately at
+		<?= $this->helper()->formatPhone($from->getPhone()) ?> to confirm <?= $personalPronoun ?> well-being.
+    </p>
+	<?php endif; ?>
+    <?php if ($safe =='dangervideo') :?>
+    <p>
+        <a class="btn btn-primary" href="<?= $link ?>">VIEW EVENT VIDEO AND GPS LOCATION</a>
+	</p>
+    <?php else: ?>
+    <p>
+        <a class="btn btn-primary" href="<?= $link ?>">VIEW GPS LOCATION</a>
+	</p>
+    <?php endif; ?>
+</div>

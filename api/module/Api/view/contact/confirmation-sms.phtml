@@ -1,0 +1,17 @@
+<?php
+use Zend\Http\Client;
+/** @var \Api\V1\Entity\User $from */
+$accept = $this->accept;
+$fullname = $this->fullname;
+$URL = "http://tinyurl.com/api-create.php?url={$accept}";
+$ch = curl_init($URL);
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);  
+curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);  
+$response = curl_exec($ch);
+curl_close($ch);
+?>
+iWitness app:
+<?= $fullname ?> has signed up for iWitness. I need friends/family to be my trusted contacts. You would get a text or email in case of emergency and reach out to make sure I’m OK. 
+
+Click on this link to accept my request. <?= $response ?>
+

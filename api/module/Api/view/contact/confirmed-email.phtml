@@ -1,0 +1,11 @@
+<?php
+/** @var \Api\V1\Entity\Contact $contact */
+$contact = $this->contact;
+$this->subject = $this->escapeHtml($contact->getFullName()) . ' has agreed to help you stay safe.';
+?>
+
+<div class="body">
+    <p>
+        <?= $this->escapeHtml($contact->getFullName()) ?> has accepted your request to be a trusted iWitness contact.
+    </p>
+</div>

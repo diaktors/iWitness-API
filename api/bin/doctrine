@@ -1,0 +1,4 @@
+#!/bin/bash
+
+php ../library/Doctrine/migrations/build/doctrine-migrations.phar "$@"
+

@@ -1,0 +1,38 @@
+<?php
+$this->subject = $this->to->getFirstName() . ' - Your iWitness subscription is up and running.';
+?>
+
+<div class="table-responsive">
+    <table class="sub-header">
+        <tr>
+            <td>
+                <h1>
+                    CONGRATULATIONS<br>on staying safer.
+                </h1>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="body">
+    <p>
+        <?= $this->escapeHtml($this->to->getFirstName()) ?>...
+    </p>
+
+    <p>
+        You've successfully subscribed to iWitness, turning your phone into the ultimate personal safety device.
+    </p>
+
+    <p>
+        We look forward to providing you with an extra layer of safety whenever you want one.
+    </p>
+
+    <p>
+        Your team at iWitness.
+    </p>
+
+    <p>
+        Learn more about <a href="<?= $this->baseUrl ?>/content-how-it-works">how it works</a>.
+    </p>
+</div>
+

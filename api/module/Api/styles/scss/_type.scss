@@ -1,0 +1,79 @@
+/* -------------------------------------
+    TYPOGRAPHY
+------------------------------------- */
+h1, h2, h3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color: #000;
+  margin: 20px 0 20px;
+  line-height: 1.2;
+  font-weight: 400;
+
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 500;
+
+  &.red {
+    font-weight:bold;
+  }
+
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 18px;
+  a {
+    font-size:18px;
+  }
+}
+h4{
+  font-size: 14px;
+  font-weight:600;
+}
+
+p, ul, ol {
+  margin-bottom: 10px;
+  font-weight: normal;
+  li{
+    margin-left: 5px;
+    list-style-position: inside;
+  }
+}
+
+p {
+  margin-bottom: 1.3em;
+}
+
+span.bold {
+  font-weight:bold;
+  color:$primary-color;
+}
+
+.disclaimer {
+  font-size:10px;
+  a {
+    font-size:10px;
+    color:$primaryFontColor;
+  }
+}
+
+.red {
+  color:$primary-color;
+  margin:0;
+}
+
+.instructions {
+  font-size:11px;
+  a {
+    font-size:11px;
+  }
+  ol {
+    margin:0;
+    padding:0 0 0 35px;
+    li {
+      margin-left:30px;
+    }
+  }
+}

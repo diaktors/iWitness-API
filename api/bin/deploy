@@ -1,0 +1,24 @@
+#!/bin/bash
+
+WEB_USER="www-data"
+
+
+echo "grant write to ../data"
+sudo chown -R $WEB_USER:$WEB_USER ../data
+
+
+# generate doctrine proxy
+php doctrine-module orm:generate-proxies
+
+# clear cache data
+php doctrine-module orm:clear-cache:metadata
+php doctrine-module orm:clear-cache:result
+php doctrine-module orm:clear-cache:query
+
+echo "grant permission to premailer"
+chmod 775 ../library/Perpii/src/Perpii/Premailer/converter.rb
+
+# echo "Build css"
+./css-compiler build
+
+echo "Please run command './doctrine migrations:migrate --release production' to update your database"

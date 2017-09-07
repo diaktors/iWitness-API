@@ -1,0 +1,23 @@
+#!/bin/bash
+
+NAME="css-compiler"
+STYLES_DIR="../module/Api/styles"
+SCSS_DIR="scss/"
+CSS_DIR="compiled"
+
+cd $STYLES_DIR
+
+case $1 in
+  watch)
+    compass watch --debug-info --time --poll
+  ;;
+  build)
+    compass compile --force --no-debug-info --output-style compressed --trace
+  ;;
+  clean)
+    compass clean
+  ;;
+  *)
+    echo "USAGE: ${NAME} [watch|build|clean]"
+  ;;
+esac

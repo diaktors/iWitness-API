@@ -1,0 +1,5 @@
+#!/usr/bin/env php
+<?php
+require dirname(__FILE__) . '/Bootstrap.php';
+
+include(APPLICATION_PATH.'/vendor/doctrine/doctrine-module/bin/doctrine-module.php');

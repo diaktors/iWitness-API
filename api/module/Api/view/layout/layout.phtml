@@ -1,0 +1,51 @@
+<body>
+
+<div class="header">
+    <div class="pull-left">
+        <a href="https://www.iwitness.com">
+            <img class="img-responsive" src="<?= $this->apiBaseUrl ?>/images/2.0/email-head.gif" alt="iWitness">
+        </a>
+    </div>
+    <div class="pull-right">
+        <div class="tagline">
+            <?php if ($this->tagline): ?>
+                <?= $this->tagline ?>
+            <?php else: ?>
+                Converts smartphones into personal safety devices.
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
+<?= $this->content ?>
+
+<div class="footer">
+    To ensure you receive our emails in your inbox, add <a href="mailto:info@iwitness.com">info@iwitness.com</a> to your
+    address book.
+</div>
+
+<div class="disclaimer">
+    <div class="body">
+        <p>
+            The information contained in this message may be privileged, confidential, and protected
+            from disclosure. If you are not the intended recipient, or person responsible for delivering this
+            message to the intended recipient, you are hereby notified that any dissemination, distribution,
+            or copying of this communication is strictly prohibited. If you have received this communication
+            in error, please notify us immediately by replying to the message and deleting from your computer.
+        </p>
+
+        <p>
+            &copy; <?= date('Y') ?> iWitness, Inc. All rights reserved. We respect your right to privacy -
+            <a href="<?= $this->baseUrl ?>/content-terms-of-service">View Our Privacy Policy</a>.
+        </p>
+    </div>
+</div>
+
+<?php
+//this is used by email fallback, please do not delete
+?>
+<!--
+    <sender-email><?=  isset($this->fallbackSender[0]) ? $this->fallbackSender[0] : '' ?></sender-email>
+    <sender-name><?=   isset($this->fallbackSender[1]) ? $this->fallbackSender[1] : '' ?></sender-name>
+-->
+</body>

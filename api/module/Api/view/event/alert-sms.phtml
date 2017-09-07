@@ -1,0 +1,50 @@
+<?php
+/** @var \Api\V1\Entity\User $from */
+$from = $this->from;
+$safe = $this->safe;
+$dialno = $this->dialno;
+$alertlink = $this->secureBaseUrl . $this->alertLink;
+$gender = $from->getGender();
+$personalPronoun = ($gender === null) ? 'them' : ($gender == 0 ? 'him' : 'her');
+$geolocation = $this->lat.','.$this->lng;
+$timeout = 5;
+$url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='.$geolocation.'&sensor=false'; 
+$ch = curl_init($url);
+curl_setopt ($ch, CURLOPT_URL, $url);
+//curl_setopt ($ch, CURLOPT_HEADER, 0);
+//curl_setopt($ch, CURLOPT_GET, 1);
+curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+//curl_setopt($ch,CURLOPT_POSTFIELDS, '');
+curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+$file_contents = curl_exec($ch);
+$json_decode = json_decode($file_contents);
+$address = $json_decode->results[0]->formatted_address;
+//$geo_url ="http://maps.google.com/maps?q={$this->lat},{$this->lng}";
+$URL = "http://tinyurl.com/api-create.php?url={$alertlink}";
+$ch = curl_init($URL);
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
+$response = curl_exec($ch);
+curl_close($ch);
+if ($safe == 'safe'): ?>
+iWitness app: 
+<?= $from->getFullName() ?> have reached their destination safely.
+
+You may use the link below to see their last GPS location as captured by iWitness.
+<?php elseif($safe =='danger'): ?>
+EMERGENCY: <?= $from->getFullName() ?> has just initiated an iWitness alert. Please contact <?= $personalPronoun ?> at <?= $this->helper()->formatPhone($from->getPhone()) ?> for their well being.
+
+Use the link below to see the last GPS location as captured by iWitness before the <?= $dialno ?> call.
+<?php else: ?>
+EMERGENCY: <?= $from->getFullName() ?> has just initiated an iWitness alert. Please contact <?= $personalPronoun ?> at <?= $this->helper()->formatPhone($from->getPhone()) ?> for their well being.
+
+Use the link below to see the last GPS location and a video of the event as captured by iWitness before the <?= $dialno ?> call.
+<?php endif; ?>
+
+<?= $response ?> 
+
+<?php if ($address == ''): ?>
+Address: ... unavailable ...
+<?php else: ?>
+Address: <?= $address ?>
+<?php endif; ?>

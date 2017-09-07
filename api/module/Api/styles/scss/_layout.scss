@@ -1,0 +1,110 @@
+/* -------------------------------------
+    BODY & CONTAINER
+------------------------------------- */
+body{
+  background-color: $grey;
+}
+
+.body-wrap {
+  background-color: $grey;
+  width: 100%;
+}
+
+/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+/*.container {
+  display: block!important;
+  max-width: $width!important;
+  margin: 0 auto !important; *//* makes it centered *//*
+  clear: both!important;
+}*/
+
+/* This should also be a block element, so that it will fill 100% of the .container */
+.content {
+  max-width: $width;
+  margin: 0 auto;
+  display: block;
+}
+
+
+/* -------------------------------------
+    HEADER, FOOTER, MAIN
+------------------------------------- */
+
+.main{
+  background:#fff;
+  border: 1px solid darken($grey,5);
+  margin-bottom:$padding;
+  border-radius:$br;
+}
+
+.content-wrapper{
+  padding:$padding;
+}
+
+.header{
+  border-bottom: 5px #777 solid;
+  width: 100%;
+  padding: 5px;
+  display: inline-block;
+}
+
+.red-bottom {
+  border-bottom:5px $primary-color solid;
+}
+
+
+.spacer {
+  margin-bottom:$padding;
+}
+
+.body {
+  margin-top:15px;
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.sub-header {
+  width:100%;
+  background-color:$gradientBg !important;
+  text-align:center;
+  padding:10px 0;
+  border-top:1px $gradientBg solid;
+  margin-top:-4px;
+
+  div {
+    margin-bottom:$padding;
+  }
+  h1 {
+    color:$primary-color;
+  }
+}
+
+.footer {
+  width: 100%;
+  color: $grey !important;
+  background-color: $footer-bg !important;
+  clear: both;
+  padding: 5px;
+
+  a {
+    color: $grey !important;
+    text-decoration:none !important;
+  }
+  p {
+    font-size:12px;
+  }
+}
+
+/* -------------------------------------
+    GRID AND COLUMNS
+------------------------------------- */
+
+.content-column{
+  float:left;
+  width:65%;
+}
+
+.sidebar-column{
+  float:left;
+  width:35%;
+}

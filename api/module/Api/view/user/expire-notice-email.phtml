@@ -1,0 +1,27 @@
+<?php
+$this->subject = $this->user->getFirstName()
+    . ' - Your subscription to iWitness expires '
+    .$this->user->getExpireInDay()
+    . Perpii\Util\String::pluralize($this->user->getExpireInDay(), ' day.', ' days.');
+?>
+
+
+<div class="body">
+    <p>
+        <?= $this->escapeHtml($this->user->getFirstName()) ?>...
+    </p>
+
+    <p>
+        Please log-in and renew your membership at:
+        <a href="<?= $this->baseUrl.'/renew' ?>"><?= $this->baseUrl.'/renew' ?></a>
+    </p>
+
+    <p>
+        Your team at iWitness.
+    </p>
+
+    <p>
+        Learn more about <a href="<?= $this->baseUrl ?>/content-how-it-works">how it works</a>.
+    </p>
+</div>
+

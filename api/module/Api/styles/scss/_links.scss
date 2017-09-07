@@ -1,0 +1,27 @@
+/* -------------------------------------
+    LINKS & BUTTONS
+------------------------------------- */
+a {
+  color: $primary-color !important;
+  line-height: 1.8;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  font-size: 14px;
+
+  strong {
+    color: inherit !important;
+  }
+}
+
+.btn {
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  @extend .btn-primary;
+
+  background-color: $primary-color !important;
+  border-color: darken($primary-color, 12%) !important;
+  text-transform: uppercase !important;
+  color: $grey !important;
+}

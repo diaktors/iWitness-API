@@ -1,0 +1,35 @@
+<?php
+/** @var \Api\V1\Entity\User $from */
+$from = $this->from;
+$safe = $this->safe;
+$gender = $from->getGender();
+$personalPronoun = ($gender === null) ? 'their' : ($gender == 1 ? 'his' : 'her');
+$geolocation = $this->lat.','.$this->lng;
+$url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='.$geolocation.'&sensor=false'; 
+$ch = curl_init($url);
+curl_setopt ($ch, CURLOPT_URL, $url);
+curl_setopt ($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_GET, 1);
+curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch,CURLOPT_POSTFIELDS, '');
+curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+$file_contents = curl_exec($ch);
+$json_decode = json_decode($file_contents);
+$address = $json_decode->results[0]->formatted_address;
+$geo_url ="http://maps.google.com/maps?q={$this->lat},{$this->lng}";
+$URL = "http://tinyurl.com/api-create.php?url={$geo_url}";
+$ch = curl_init($URL);
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
+$response = curl_exec($ch);
+curl_close($ch);
+if ($safe == 'safe'): ?>
+iWitness app: 
+I’ve reached my destination safely.
+<?php else: ?>
+EMERGENCY: (First Name) has just initiated an iWitness alert. Please contact <?= $personalPronoun ?> at <?= $this->helper()->formatPhone($from->getPhone()) ?> for their well being. Use the link below to see the GPS location before the 911 call.
+
+You are a trusted contact for <?= $from->getFullName() ?>. Please contact them at <?= $this->helper()->formatPhone($from->getPhone()) ?> to confirm <?= $personalPronoun ?> well being.
+<?php endif; ?>
+Geo Location: <?= $response ?> 
+Address: <?= $address ?>

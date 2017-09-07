@@ -1,0 +1,73 @@
+{
+    "minimum-stability": "dev",
+    "name": "zfcampus/zf-apigility-skeleton",
+    "description": "Skeleton Application for Apigility",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "api",
+        "apigility",
+        "framework",
+        "zf2"
+    ],
+    "homepage": "http://apigility.org/",
+    "support": {
+        "email": "apigility-users@zend.com",
+        "irc": "irc://irc.freenode.net/apigility",
+        "source": "https://github.com/zfcampus/zf-apigility-skeleton",
+        "issues": "https://github.com/zfcampus/zf-apigility-skeleton/issues"
+    },
+    "config": {
+    	"process-timeout": 5000
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "require": {
+        "php": ">=5.3.23",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-uuid": "*",
+        "paypal/merchant-sdk-php":"v3.6.106",
+        "bshaffer/oauth2-server-php": "dev-develop",
+        "rwoverdijk/assetmanager": "~1.3",
+        "zendframework/zendframework": "~2.3",
+        "zfcampus/zf-apigility": "~1.0-dev",
+        "zfcampus/zf-apigility-provider": "~1.0-dev",
+        "zfcampus/zf-apigility-documentation": "~1.0-dev",
+        "zfcampus/zf-api-problem": "~1.0-dev",
+        "zfcampus/zf-content-negotiation": "~1.0-dev",
+        "zfcampus/zf-content-validation": "~1.0-dev",
+        "zfcampus/zf-development-mode": "~2.0",
+        "zfcampus/zf-hal": "~1.0-dev",
+        "zfcampus/zf-mvc-auth": "~1.0-dev",
+        "zfcampus/zf-oauth2": "~1.0-dev",
+        "zfcampus/zf-rest": "~1.0-dev",
+        "zfcampus/zf-rpc": "~1.0-dev",
+        "zfcampus/zf-versioning": "~1.0-dev",
+        "zfcampus/zf-deploy": "~1.0-dev",
+        "zfcampus/statuslib-example": "~1.0-dev",
+        "zfcampus/zf-configuration": "~1.0-dev",
+        "doctrine/doctrine-orm-module": "0.*",
+        "civocr/nexmo-php-lib": "dev-master",
+        "php-ffmpeg/php-ffmpeg": "~0.4",
+        "php-ffmpeg/extras": "0.3.*@dev",
+        "phpexiftool/phpexiftool": "~0.1.0",
+        "kmelia/monolog-stdout-handler": "dev-master",
+        "authorizenet/authorizenet": "dev-master",
+        "zfr/zfr-cors": "1.*",
+        "aws/aws-sdk-php-zf2": "dev-master",
+        "slm/mail": "~1.5",
+        "google/apiclient": "1.0.*@beta",
+        "jmhobbs/swiftmailer-transport-aws-ses": "dev-master"
+    },
+    "require-dev": {
+        "zendframework/zftool": "dev-master",
+        "zendframework/zend-developer-tools": "dev-master",
+        "zfcampus/zf-apigility-admin": "~1.0-dev",
+
+        "zfcampus/zf-apigility-welcome": "~1.0-dev"
+    }
+}

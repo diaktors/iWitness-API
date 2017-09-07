@@ -1,0 +1,66 @@
+<?php
+
+/** @var \Api\V1\Entity\User $from */
+$from = $this->from;
+/** @var \Api\V1\Entity\User $to */
+$to = $this->to;
+$web = $this->webConfig;
+$name = $from->getFullName()
+    ? $this->escapeHtml($from->getFullName())
+    : $this->escapeHtml($from->getEmail());
+$fname = $this->escapeHtml($from->getFirstName() ?: $from->getEmail());
+$this->subject = $name . ' has designated you as an emergency contact.';
+?>
+
+<div style="display: block">
+    <div class="sub-header">
+        <h1>I CAN'T DO THIS WITHOUT YOU.</h1>
+    </div>
+
+    <div class="body">
+        <p>
+            TO: <strong><?= $this->escapeHtml($to->getFirstName()) ?></strong>
+            <br>
+            FROM: <strong><?= $name ?></strong>
+        </p>
+
+        <p>
+            I've signed up with iWitness, but I need friends and family to be my trusted
+            contacts. As a contact, you would receive an email or text alert from me, if I get
+            into a threatening situation. You'd then try to contact me to make sure I'm OK.
+        </p>
+    </div>
+
+    <div class="body" style="margin-bottom: 10px;">
+        <p>
+            Yes, I would be happy to be a trusted contact.
+        </p>
+        <a class="btn btn-primary" href="<?= $this->accept ?>">
+            Accept
+        </a>
+    </div>
+
+    <table width="100%" style="border-bottom:30px solid #77787b">
+        <tr>
+            <td style="text-align:left; padding: 10px 20px 0 20px; border: 0px; line-height:1.2;" class="sub-header">
+                <p>
+                    <strong>ABOUT IWITNESS</strong>
+                    <br/>
+                    iWitness turns your smartphone into the one thing criminals fear most - a witness to their actions.
+                </p>
+            </td>
+        </tr>
+        <tr style="background-color:#bebec0; text-align:center; ">
+            <td>
+                <a href="<?= $this->baseUrl ?>/content-how-it-works">
+                    <img
+                        class="img-responsive" width="100%"
+                        src="<?= $this->apiBaseUrl ?>/images/2.0/how-it-works.jpg"
+                        alt="Learn how iWitness works at <?= $this->baseUrl ?>"/>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<?= $this->render('partial/common-sense.phtml'); ?>
